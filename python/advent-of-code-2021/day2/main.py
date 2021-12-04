@@ -1,3 +1,6 @@
+from time import perf_counter
+
+
 def go_forward(position, length, aim):
     # print('before', position, aim, length, aim*length)
     position[0] += length
@@ -48,11 +51,16 @@ def iterate(direction, position, aim):
 
 
 def main():
+    t1_start = perf_counter()
     position = [0, 0]
     aim = 0
     direction = open_file("input.txt")
     position = iterate(direction, position, aim)
     print(position[0] * position[1])
+    t1_stop = perf_counter()
+    print("Elapsed time:", t1_stop, t1_start)
+    print("Elapsed time during the whole program in seconds:",
+          t1_stop - t1_start)
 
 
 if __name__ == "__main__":
